@@ -5,6 +5,12 @@ from employees.models import Employee
 
 class Department(models.Model):
     department_name = models.CharField(max_length=55)
+    department_desc = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
 
 
 class Position(models.Model):
