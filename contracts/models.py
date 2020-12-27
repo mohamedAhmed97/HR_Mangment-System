@@ -12,13 +12,13 @@ class Department(models.Model):
         null=True,
     )
     def __str__(self):
-        return department_name
+        return self.department_name
 
 
 class Position(models.Model):
     position_name = models.CharField(max_length=55)
     def __str__(self):
-        return position_name
+        return self.position_name
 
 class Contract(models.Model):
     emp_id = models.ForeignKey(
