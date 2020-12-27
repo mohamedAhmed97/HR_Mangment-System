@@ -29,6 +29,7 @@ class Employee(models.Model):
     insured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     has_medical = models.BooleanField(default=False)
+    balance=models.IntegerField(default=21)
 
     def __str__(self):
         return self.full_name
