@@ -1,5 +1,6 @@
 from django.db import models
 from employees.models import Employee
+from datetime import timedelta
 # Create your models here.
 
 
@@ -23,5 +24,10 @@ class EmployeeLevel(models.Model):
     end_date = models.DateField()
     confirm=models.CharField(max_length=1, choices=CONFIRM_CHOICE)
 
+    def calculate_number_of_days(self):
+        return (self.end_date -self.start_date).days
+
+    def calculate_resume_date(self):
+        return self.end_date +timedelta(self.calculate_number_of_days())    
     def __str__(self):
         return self.emp_id.full_name

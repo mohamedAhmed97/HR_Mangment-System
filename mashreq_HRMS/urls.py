@@ -16,11 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import index
-from leaves import urls as leaves_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard',index),
-    path('',include(leaves_urls))
-   
 
 ]
