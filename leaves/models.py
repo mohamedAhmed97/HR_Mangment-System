@@ -22,3 +22,6 @@ class EmployeeLevel(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     confirm=models.CharField(max_length=1, choices=CONFIRM_CHOICE)
+
+    def __str__(self):
+        return self.emp_id.full_name

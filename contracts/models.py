@@ -41,3 +41,6 @@ class Contract(models.Model):
     )
     start_date = models.DateField()
     end_date = models.DateField()
+
+    def __str__(self):
+        return self.emp_id.full_name
