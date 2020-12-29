@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from contracts.models import Contract
+from .models import Employee
 from .forms import EmployeeForm
 # Create your views here.
 
 def employees_list(request):
-    query_set = Contract.objects.all()
+    query_set = Employee.objects.all()
     context = {"employees": query_set}
     return render(request, 'employee_list.html', context)
 
