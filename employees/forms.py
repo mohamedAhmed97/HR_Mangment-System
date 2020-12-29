@@ -1,6 +1,7 @@
 from django import forms
 from .models import Employee
 
+#class init -> self.date_field.widget.inputtype='data'
 
 class DateInput(forms.DateInput):
     input_type = 'date'

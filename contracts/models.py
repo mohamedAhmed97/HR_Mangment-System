@@ -26,19 +26,19 @@ class Position(models.Model):
 class Contract(models.Model):
     emp_id = models.ForeignKey(
         Employee,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
     )
     dep_id = models.ForeignKey(
         Department,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
     )
     pos_id = models.ForeignKey(
         Position,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
     )
