@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Employee(models.Model):
     GENDER_CHOICE = (
         ('F', 'female'),
@@ -29,7 +31,7 @@ class Employee(models.Model):
     insured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     has_medical = models.BooleanField(default=False)
-    balance=models.IntegerField(
+    balance = models.IntegerField(
         default=21,
         blank=True,
         null=True,
