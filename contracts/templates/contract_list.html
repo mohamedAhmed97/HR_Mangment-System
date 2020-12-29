@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">add Contract</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level Data Table</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>position</th>
+                        <th>department</th>
+                        <th>start Date</th>
+                        <th>end Number</th>
+                        <th colspan="2">Edit</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>position</th>
+                        <th>department</th>
+                        <th>start Date</th>
+                        <th>end Number</th>
+                        <th colspan="2">Edit</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {%for con in contracts%}
+                    <tr>
+                        <td>{{con.emp_id}}</td>
+                        <td>{{con.pos_id}}</td>
+                        <td>{{con.dep_id}}</td>
+                        <td>{{con.start_date}}</td>
+                        <td>{{con.get_end_date_value}}</td>
+                        <td>
+                            <a href="edit/{{emp.id}}">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-user-edit"></i>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="delete/{{emp.id}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-user-minus"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
