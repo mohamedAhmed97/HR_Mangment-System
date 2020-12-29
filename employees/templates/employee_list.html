@@ -22,6 +22,7 @@
                         <th>Address</th>
                         <th>Hire Date</th>
                         <th>Mobile Number</th>
+                        <th colspan="2">Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -31,6 +32,7 @@
                         <th>Address</th>
                         <th>Hire Date</th>
                         <th>Mobile Number</th>
+                        <th colspan="2">Edit</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -41,6 +43,20 @@
                         <td>{{emp.address}}</td>
                         <td>{{emp.hire_date}}</td>
                         <td>{{emp.mobile_number}}</td>
+                        <td>
+                            <a href="edit/{{emp.id}}">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-user-edit"></i>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="delete/{{emp.id}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-user-minus"></i>
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                     {%endfor%}
                 </tbody>
