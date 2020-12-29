@@ -11,14 +11,17 @@ class Department(models.Model):
         blank=True,
         null=True,
     )
+
     def __str__(self):
         return self.department_name
 
 
 class Position(models.Model):
     position_name = models.CharField(max_length=55)
+
     def __str__(self):
         return self.position_name
+
 
 class Contract(models.Model):
     emp_id = models.ForeignKey(
@@ -40,7 +43,11 @@ class Contract(models.Model):
         null=True,
     )
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(
+        default=None,
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.emp_id.full_name

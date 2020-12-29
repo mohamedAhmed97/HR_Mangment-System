@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br>
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level Data Table</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Leave start Date</th>
+                        <th>Leave End Date</th>
+                        <th>Resume Date</th>
+                        <th>Number Of Days</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Leave start Date</th>
+                        <th>Leave End Date</th>
+                        <th>Resume Date</th>
+                        <th>Number Of Days</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {%for emp in employees%}
+                    <tr>
+                        <td>{{emp.emp_id}}</td>
+                        <td>{{emp.dep_id}}</td>
+                        <td>{{emp.pos_id}}</td>
+                        <td>{{emp.start_date}}</td>
+                        <td>{{emp.end_date}} days</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock content%}
