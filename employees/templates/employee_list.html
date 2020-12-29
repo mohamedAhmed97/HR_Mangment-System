@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
 <br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">add Employee</button>
+    </a>
+</div>
+
 <div class="card mb-4">
     <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level Data Table</div>
     <div class="card-body">
@@ -10,19 +18,19 @@
                 <thead>
                     <tr>
                         <th>Employee Name</th>
-                        <th>Leave start Date</th>
-                        <th>Leave End Date</th>
-                        <th>Resume Date</th>
-                        <th>Number Of Days</th>
+                        <th>department</th>
+                        <th>position</th>
+                        <th>start Date</th>
+                        <th>End Date</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Employee Name</th>
-                        <th>Leave start Date</th>
-                        <th>Leave End Date</th>
-                        <th>Resume Date</th>
-                        <th>Number Of Days</th>
+                        <th>department</th>
+                        <th>position</th>
+                        <th>start Date</th>
+                        <th>End Date</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -32,7 +40,7 @@
                         <td>{{emp.dep_id}}</td>
                         <td>{{emp.pos_id}}</td>
                         <td>{{emp.start_date}}</td>
-                        <td>{{emp.end_date}} days</td>
+                        <td>{{emp.get_end_date_value}}</td>
                     </tr>
                     {%endfor%}
                 </tbody>

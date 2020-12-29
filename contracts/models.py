@@ -51,3 +51,8 @@ class Contract(models.Model):
 
     def __str__(self):
         return self.emp_id.full_name
+
+    def get_end_date_value(self):
+        if self.end_date is None:
+            return "Still Working"
+        return self.end_date
