@@ -1,5 +1,6 @@
 from django.db import models
-from employees.models import Employee
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
@@ -24,8 +25,8 @@ class Position(models.Model):
 
 
 class Contract(models.Model):
-    emp_id = models.ForeignKey(
-        Employee,
+    user_id = models.ForeignKey(
+        User,
         on_delete=models.CASCADE,
         blank=True,
         null=True,
@@ -50,7 +51,7 @@ class Contract(models.Model):
     )
 
     def __str__(self):
-        return self.emp_id.full_name
+        return self.user_id
 
     def get_end_date_value(self):
         if self.end_date is None:
