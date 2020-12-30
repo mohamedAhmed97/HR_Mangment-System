@@ -24,7 +24,10 @@ class EmployeeLevel(models.Model):
     end_date = models.DateField()
     confirm = models.CharField(
         max_length=1,
-        choices=CONFIRM_CHOICE
+        choices=CONFIRM_CHOICE,
+        default='w',
+        blank=True,
+        null=True,
     )
 
     def calculate_number_of_days(self):
