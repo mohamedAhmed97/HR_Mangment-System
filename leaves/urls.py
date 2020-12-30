@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Employee_Level_list
+from .views import leaves_list
 urlpatterns = [
-    
+    path('leaves/',leaves_list)
 ]
