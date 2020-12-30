@@ -22,12 +22,16 @@ class EmployeeLevel(models.Model):
     leave_id = models.ForeignKey(LeaveMaster, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
-    confirm=models.CharField(max_length=1, choices=CONFIRM_CHOICE)
+    confirm = models.CharField(
+        max_length=1,
+        choices=CONFIRM_CHOICE
+    )
 
     def calculate_number_of_days(self):
-        return (self.end_date -self.start_date).days
+        return (self.end_date - self.start_date).days
 
     def calculate_resume_date(self):
-        return self.end_date +timedelta(self.calculate_number_of_days())    
+        return self.end_date + timedelta(self.calculate_number_of_days())
+
     def __str__(self):
         return self.emp_id.full_name
