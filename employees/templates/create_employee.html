@@ -8,7 +8,7 @@
         {%csrf_token%}
         <div class="row">
             <div class="col-6">
-                {{ form.full_name|as_crispy_field }}
+                {{ form.user|as_crispy_field }}
             </div>
             <div class="col-6">
                 {{ form.gender|as_crispy_field }}
