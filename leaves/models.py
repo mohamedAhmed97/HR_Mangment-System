@@ -1,5 +1,5 @@
 from django.db import models
-from employees.models import Employee
+from employees.models import User
 from datetime import timedelta
 # Create your models here.
 
@@ -18,7 +18,7 @@ class EmployeeLevel(models.Model):
         ('a', 'accepted'),
         ('r', 'rejected')
     )
-    emp_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    emp_id = models.ForeignKey(User, on_delete=models.CASCADE)
     leave_id = models.ForeignKey(LeaveMaster, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -37,4 +37,4 @@ class EmployeeLevel(models.Model):
         return self.end_date + timedelta(self.calculate_number_of_days())
 
     def __str__(self):
-        return self.emp_id.full_name
+        return self.emp_id

@@ -39,10 +39,10 @@
                     {%for emp in employees%}
                     <tr>
                         <td>{{emp.username}}</td>
-                        <td>{{emp.employee.nationality}}</td>
-                        <td>{{emp.employee.address}}</td>
-                        <td>{{emp.employee.hire_date}}</td>
-                        <td>{{emp.employee.mobile_number}}</td>
+                        <td>{{emp.nationality}}</td>
+                        <td>{{emp.address}}</td>
+                        <td>{{emp.hire_date}}</td>
+                        <td>{{emp.mobile_number}}</td>
                         <td>
                             <a href="edit/{{emp.id}}">
                                 <button type="button" class="btn btn-outline-primary btn-sm">

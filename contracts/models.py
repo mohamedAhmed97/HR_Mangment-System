@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from employees.models import User
 
 # Create your models here.
 
@@ -51,7 +51,7 @@ class Contract(models.Model):
     )
 
     def __str__(self):
-        return self.user_id
+        return self.user_id.first_name
 
     def get_end_date_value(self):
         if self.end_date is None:

@@ -1,20 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model  # Create your models here.
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
-User = get_user_model()
-# show name of user
 
 
-def get_user_name(self):
-    return self.username
-
-
-User.add_to_class("__str__", get_user_name)
-
-
-class Employee(models.Model):
+class User(AbstractUser):
     GENDER_CHOICE = (
         ('F', 'female'),
         ('M', 'male'),
@@ -27,15 +16,18 @@ class Employee(models.Model):
         ('N', 'national id'),
         ('P', 'passport')
     )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     gender = models.CharField(max_length=1, choices=GENDER_CHOICE)
     nationality = models.CharField(max_length=55)
     address = models.CharField(max_length=75)
     id_type = models.CharField(max_length=1, choices=ID_CHOICE)
     id_numbers = models.CharField(max_length=14)
-    hire_date = models.DateField('hire_date')
+    hire_date = models.DateField(
+                                 default=None,
+                                 blank=True,
+                                 null=True,)
     emp_number = models.CharField(max_length=10)
-    date_of_birth = models.DateField('date_of_birth')
+    date_of_birth = models.DateField('date_of_birth',default=None,null=True)
     place_of_birth = models.CharField(max_length=75)
     social_status = models.CharField(max_length=1, choices=SOCIAL_CHOICE)
     mobile_number = models.CharField(max_length=11)
@@ -49,4 +41,7 @@ class Employee(models.Model):
     )
 
     def __str__(self):
-        return self.user.username
+        return self.username
+
+    def assign_role(self):
+        pass
