@@ -31,7 +31,7 @@ LOGIN_REDIRECT_URL="/home"
 LOGOUT_REDIRECT_URL = "/login"
 AUTH_USER_MODEL = 'employees.User'
 # Application definition
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
