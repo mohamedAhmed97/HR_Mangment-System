@@ -26,10 +26,12 @@ SECRET_KEY = '34*n!j7kg*rq9!9d53k98lfx3*ae2k=ku-(_2ul9s(vb-gn$65'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-LOGIN_URL="/login"
-LOGIN_REDIRECT_URL="/home"
+LOGIN_URL = "/login"
+LOGIN_REDIRECT_URL = "/home"
 LOGOUT_REDIRECT_URL = "/login"
 AUTH_USER_MODEL = 'employees.User'
+
+
 # Application definition
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 INSTALLED_APPS = [
@@ -80,7 +82,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mashreq_HRMS.wsgi.application'
 
+# DataFlair #EMAIL
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hr.mashreq.arabia@gmail.com'
+EMAIL_HOST_PASSWORD = 'amrawy.gehad.mamdouh'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -136,4 +145,3 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "mashreq_HRMS/static"),
     os.path.join(BASE_DIR, "static/"),
 ]
-

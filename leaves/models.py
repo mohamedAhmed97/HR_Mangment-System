@@ -31,7 +31,7 @@ class EmployeeLevel(models.Model):
     )
 
     def calculate_number_of_days(self):
-        return (self.end_date - self.start_date).days
+        return int((self.end_date - self.start_date).days)
 
     def calculate_resume_date(self):
         return self.end_date + timedelta(self.calculate_number_of_days())
