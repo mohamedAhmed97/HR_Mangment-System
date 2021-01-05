@@ -3,9 +3,11 @@ from .models import Contract
 from .forms import ContractForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-
+@login_required
 def contracts_list(request):
     query_set = Contract.objects.all()
     return render(request, 'contract_list.html', {'contracts': query_set})
@@ -20,13 +22,13 @@ def create_contract(request):
         return HttpResponseRedirect('/contracts')
     return render(request, 'create_contract.html', {'form': form})
 
-
+@login_required
 def delete_contract(request, con_id):
     contract = Contract.objects.get(id=con_id)
     contract.delete()
     return HttpResponseRedirect('/contracts')
 
-
+@login_required
 def edit_contract(request, con_id):
     contract = get_object_or_404(Contract, id=con_id)
     if request.method == "POST":

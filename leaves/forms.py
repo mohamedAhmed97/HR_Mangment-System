@@ -20,7 +20,7 @@ class EmployeeLevelForm(forms.ModelForm):
         today = date.today()
         last_leave = EmployeeLevel.objects.filter(emp_id=user_id).reverse()
         if len(last_leave) > 0:
-            if(today < last_leave[0].end_date):
+            if(today <= last_leave[0].end_date):
                 print(last_leave[0].emp_id)
                 return False
             else:

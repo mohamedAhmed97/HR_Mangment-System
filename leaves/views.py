@@ -11,8 +11,9 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from employees.models import User
-
-
+from django.contrib.auth.decorators import login_required
+from mashreq_HRMS.utils import allowed_user
+@login_required
 def leaves_list(request):
     query_set = EmployeeLevel.objects.filter(confirm='w')
     return render(request, 'employee_level_list.html', {'employees': query_set})
@@ -23,24 +24,31 @@ def test_presave(sender, instance, *args, **kwargs):
     instance.emp_id=request.user.id
     print (instance) """
 
-
+@login_required
 def create_leaves(request):
     form = EmployeeLevelForm()
     if request.method == "POST":
         form = EmployeeLevelForm(request.POST)
         if form.is_valid():
-            check_date = form.check_leave(request.user.id)
+            check_date = form.check_leave(form.data['emp_id'])
             if check_date == True:
                 leave = form.save(commit=False)
-                leave.emp_id = request.user
-                leave.save()
+                # leave.emp_id = request.user
+                if leave.check_balance() == True:
+                    # print("true")
+                    leave.save()
+                else:
+                    messages.error(request, 'Your balance!')
+                #
+
             else:
                 messages.error(request, 'You are in aleave!')
 
         return HttpResponseRedirect('/leaves')
     return render(request, 'create_leaves.html', {'form': form})
 
-
+@login_required
+@allowed_user(allowed_roles=['Manger'])
 def accept_leave(request, con_id):
     employee_level = EmployeeLevel.objects.filter(id=con_id)
     msg_html = render_to_string('emails/accept.html')
@@ -59,7 +67,7 @@ def accept_leave(request, con_id):
     messages.success(request, 'leave accepted!')
     return HttpResponseRedirect('/leaves')
 
-
+@login_required
 def reject_leave(request, con_id):
     EmployeeLevel.objects.filter(id=con_id).update(confirm='r')
     msg_html = render_to_string('emails/reject.html')

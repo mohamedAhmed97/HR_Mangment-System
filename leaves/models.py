@@ -36,5 +36,11 @@ class EmployeeLevel(models.Model):
     def calculate_resume_date(self):
         return self.end_date + timedelta(self.calculate_number_of_days())
 
+    def check_balance(self):
+        if self.emp_id.balance > self.calculate_number_of_days():
+            return True
+        else:    
+            return False
+
     def __str__(self):
         return self.emp_id
