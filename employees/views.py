@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import Group
+from mashreq_HRMS.utils import allowed_user
 # Create your views here.
 
 
@@ -19,6 +20,7 @@ def employees_list(request):
 
 
 @login_required
+@allowed_user(allowed_roles=['Manger','HR'])
 def create_employee(request):
     form = EmployeeForm()
     if request.method == "POST":
@@ -42,6 +44,7 @@ def assign_role(sender, instance, *args, **kwargs):
 
 
 @login_required
+@allowed_user(allowed_roles=['Manger'])
 def delete_employee(request, emp_id):
     employee = User.objects.get(id=emp_id)
     employee.delete()
@@ -49,6 +52,7 @@ def delete_employee(request, emp_id):
 
 
 @login_required
+@allowed_user(allowed_roles=['Manger'])
 def edit_employee(request, emp_id):
     employee = get_object_or_404(User, user_id=emp_id)
     if request.method == "POST":
