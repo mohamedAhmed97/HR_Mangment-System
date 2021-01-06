@@ -13,6 +13,7 @@ from django.conf import settings
 from employees.models import User
 from django.contrib.auth.decorators import login_required
 from mashreq_HRMS.utils import allowed_user
+from django.shortcuts import get_object_or_404
 @login_required
 def leaves_list(request):
     query_set = EmployeeLevel.objects.filter(confirm='w')

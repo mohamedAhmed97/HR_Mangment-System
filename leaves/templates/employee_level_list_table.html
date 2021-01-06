@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load group_extra %}
 <div class="card mb-4">
     <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level Data Table</div>
     <div class="card-body">
@@ -14,7 +14,9 @@
                         <th>Number Of Days</th>
                         <th>Leves Type</th>
                         <th>Confirmed</th>
+                        {% if request.user|has_group:"Manger" %}
                         <th colspan="2">status</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tfoot>
@@ -26,7 +28,9 @@
                         <th>Number Of Days</th>
                         <th>Leves Type</th>
                         <th>Confirmed</th>
+                        {% if request.user|has_group:"Manger" %}
                         <th colspan="2">status</th>
+                        {% endif %}
                     </tr>
                 </tfoot>
                 <tbody>
@@ -39,6 +43,7 @@
                         <td>{{emp.calculate_number_of_days}} days</td>
                         <td>{{emp.leave_id}}</td>
                         <td>{{emp.confirm}}</td>
+                        {% if request.user|has_group:"Manger" %}
                         <td>
                             <a href="{{emp.id}}/accept">
                                 <button type="button" class="btn btn-outline-primary btn-sm">
@@ -53,6 +58,7 @@
                                 </button>
                             </a>
                         </td>
+                        {% endif %}
                     </tr>
                     {%endfor%}
                 </tbody>
